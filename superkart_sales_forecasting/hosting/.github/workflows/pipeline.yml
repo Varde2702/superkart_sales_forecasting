@@ -1,0 +1,14 @@
+name: mlops-pipeline
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: pip install -r superkart_sales_forecasting/deployment/requirements.txt
+      - run: python superkart_sales_forecasting/model_building/train.py
