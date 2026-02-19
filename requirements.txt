@@ -4,5 +4,5 @@ scikit-learn
 xgboost
 joblib
 huggingface_hub
-streamlit==1.25.0
-altair==4.2.2
+streamlit
+altair
