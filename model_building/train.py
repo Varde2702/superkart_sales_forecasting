@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from xgboost import XGBRegressor
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import r2_score, mean_squared_error
@@ -27,7 +28,8 @@ best_model = grid.best_estimator_
 preds = best_model.predict(X_test)
 
 print('R2:', r2_score(y_test, preds))
-print('RMSE:', mean_squared_error(y_test, preds, squared=False))
+mse = mean_squared_error(y_test, preds)
+print('RMSE:', np.sqrt(mse))
 
 os.makedirs('../deployment', exist_ok=True)
 joblib.dump(best_model, '../deployment/best_model.pkl')
